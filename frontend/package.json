@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@solana/web3.js": "^1.98.1",
+    "@splinetool/react-spline": "^4.0.0",
+    "dotenv": "^16.5.0",
     "framer-motion": "^12.8.2",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.3"
   },
   "devDependencies": {
     "typescript": "^5",

@@ -9,7 +9,7 @@ interface EpochProgressCardProps {
 
 export function EpochProgressCard({ epochInfo, isLoading }: EpochProgressCardProps) {
   return (
-    <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl p-5 overflow-hidden">
+    <div className="bg-white/15 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-5 overflow-hidden">
       <h2 className="text-white text-lg font-semibold mb-4 flex items-center gap-2">
         <Clock className="w-5 h-5 text-purple-400" />
         Epoch Progress

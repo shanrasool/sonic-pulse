@@ -65,8 +65,6 @@ export const useBlockchainData = (): BlockchainData => {
       setInflationGovernor(inflationGovernorResult);
       setSupply(supplyResult);
       setTotalTransactions(transactionCount);
-
-      // TPS Calculation
       const now = Date.now();
       if (prevTxCountRef.current !== null && prevTimestampRef.current !== null) {
         const deltaTx = transactionCount - prevTxCountRef.current;
@@ -95,8 +93,6 @@ export const useBlockchainData = (): BlockchainData => {
     const slotSubscriptionId = connection.onSlotChange((slotInfo: SlotInfo) => {
       setSlotHeight(slotInfo.slot);
     });
-
-    // Refresh TPS every 10 seconds
     const interval = setInterval(fetchData, 10000);
 
     return () => {

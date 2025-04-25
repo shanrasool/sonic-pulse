@@ -1,4 +1,3 @@
-// services/transactions.ts
 import { api, Query } from "encore.dev/api";
 import { RPC_CONNECTION } from "../lib";
 import { PublicKey } from "@solana/web3.js";
