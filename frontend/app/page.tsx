@@ -12,11 +12,14 @@ import { EconomicsCard } from "@/components/layout/economic-card"
 import { EpochProgressCard } from "@/components/layout/epoch-card"
 import { InflationGovernanceCard } from "@/components/layout/inflation-card"
 import { TPSBarGraph } from "@/components/layout/tps-chart"
+import { determineInputType } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 // import { PriceChart } from "@/components/layout/price-chart"
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("")
   const isMobile = useMediaQuery("(max-width: 640px)")
+  const router = useRouter()
   const {
     latestBlock,
     slotHeight,
@@ -32,17 +35,28 @@ export default function Home() {
   } = useBlockchainData()
 
   const handleSearch = () => {
-    console.log("Searching for:", searchTerm)
+    const inputType = determineInputType(searchTerm)
+    
+    switch (inputType) {
+      case 'address':
+        router.push(`/account/${searchTerm}`)
+        break
+      case 'transaction':
+        router.push(`/tx/${searchTerm}`)
+        break
+      default:
+        router.push('/not-found')
+    }
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 relative overflow-hidden">
+    <div className="flex flex-col items-center p-4 sm:p-6 md:p-8 relative overflow-hidden">
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 w-full max-w-3xl px-2 sm:px-0 py-8 sm:py-12"
+        className="relative z-10 w-full max-w-4xl px-2 sm:px-0 py-8 sm:py-12"
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -63,7 +77,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="bg-white/15 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-5 sm:p-8 w-full mb-6"
+          className="bg-black/40 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-5 sm:p-8 w-full mb-6"
         >
           <div className="flex flex-col gap-4 sm:gap-6">
             <div className="relative">
@@ -104,7 +118,7 @@ export default function Home() {
             size="sm"
             onClick={refreshData}
             disabled={isLoading}
-            className="text-white/70 hover:text-white hover:bg-white/15 p-1 h-8"
+            className="text-white/70 hover:text-white hover:bg-black/40 p-1 h-8"
           >
             <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`} />
             <span className="ml-1 text-xs">Refresh</span>

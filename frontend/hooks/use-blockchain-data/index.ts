@@ -70,7 +70,7 @@ export const useBlockchainData = (): BlockchainData => {
         const deltaTx = transactionCount - prevTxCountRef.current;
         const deltaTimeSec = (now - prevTimestampRef.current) / 1000;
         const calculatedTps = deltaTx / deltaTimeSec;
-        setTps(Number(calculatedTps.toFixed(2)));
+        setTps(Number(calculatedTps.toFixed(0)));
       }
 
       prevTxCountRef.current = transactionCount;

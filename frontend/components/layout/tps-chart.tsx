@@ -48,7 +48,7 @@ export function TPSBarGraph() {
   };
 
   return (
-    <div className="bg-white/15 mt-5 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-5 overflow-hidden">
+    <div className="bg-black/40 mt-5 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-5 overflow-hidden">
       <h2 className="text-white text-lg font-semibold mb-4 flex items-center gap-2">
         <Activity className="w-5 h-5 text-blue-400" />
         Transactions Per Second

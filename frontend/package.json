@@ -9,12 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@coral-xyz/anchor": "^0.31.1",
+    "@radix-ui/react-accordion": "^1.2.8",
+    "@radix-ui/react-tooltip": "^1.2.4",
     "@solana/web3.js": "^1.98.1",
     "@splinetool/react-spline": "^4.0.0",
+    "@tanstack/react-query": "^5.74.4",
+    "@types/pako": "^2.0.3",
+    "axios": "^1.9.0",
+    "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
     "framer-motion": "^12.8.2",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",
+    "pako": "^2.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recharts": "^2.15.3"

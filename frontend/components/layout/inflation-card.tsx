@@ -12,7 +12,7 @@ interface InflationGovernanceCardProps {
 
 export function InflationGovernanceCard({ inflationGovernor, isLoading }: InflationGovernanceCardProps) {
   return (
-    <div className="bg-white/15 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-5 overflow-hidden">
+    <div className="bg-black/40 backdrop-blur-2xl border border-white/30 rounded-2xl shadow-xl p-5 overflow-hidden">
       <h2 className="text-white text-lg font-semibold mb-4 flex items-center gap-2">
         <BarChart3 className="w-5 h-5 text-blue-400" />
         Inflation Governance
