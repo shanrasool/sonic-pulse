@@ -67,9 +67,13 @@ export const getTransaction = api(
                 transaction: txn.transaction ? {
                     message: {
                         header: txn.transaction.message.header,
-                        accountKeys: txn.transaction.message.accountKeys.map(key => key.toString()),
+                        accountKeys: txn.transaction.message.getAccountKeys().staticAccountKeys.map(key => key.toBase58()),
                         recentBlockhash: txn.transaction.message.recentBlockhash,
-                        instructions: txn.transaction.message.instructions,
+                        instructions: txn.transaction.message.compiledInstructions.map(ix => ({
+                            programIdIndex: ix.programIdIndex,
+                            accountKeyIndexes: ix.accountKeyIndexes,
+                            data: Buffer.from(ix.data).toString('base64')
+                        })),
                     },
                     signatures: txn.transaction.signatures
                 } : null

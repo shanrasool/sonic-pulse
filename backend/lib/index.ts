@@ -1,9 +1,9 @@
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { Connection, PublicKey, AccountInfo, LAMPORTS_PER_SOL, ParsedAccountData, TransactionResponse } from "@solana/web3.js";
+import { Connection, PublicKey, AccountInfo, LAMPORTS_PER_SOL, ParsedAccountData, TransactionResponse, VersionedTransactionResponse } from "@solana/web3.js";
 import { UserToken } from "../types";
 
 export const RPC_CONNECTION = new Connection(
-    'https://sonic.helius-rpc.com/',
+    'https://api.mainnet-alpha.sonic.game/',
     'confirmed'
 );
 
@@ -18,10 +18,13 @@ export const getTransactionCount = async (account: string): Promise<number> => {
     }
 };
 
-export const processTxn = async (signature: string): Promise<TransactionResponse | null> => {
+export const processTxn = async (signature: string): Promise<VersionedTransactionResponse | null> => {
     try {
-      const tx = await RPC_CONNECTION.getTransaction(signature, { commitment: "confirmed" });
-      console.log(tx?.meta?.innerInstructions);
+      const tx = await RPC_CONNECTION.getTransaction(signature, {
+        commitment: "confirmed",
+        maxSupportedTransactionVersion: 0,
+      });
+      console.log(tx);
       return tx;
     } catch (error) {
       if (error instanceof Error) {
@@ -34,6 +37,7 @@ export const processTxn = async (signature: string): Promise<TransactionResponse
       return null;
     }
   }
+  
 
 export const getAccount = async (account: string): Promise<AccountInfo<Buffer> | null> => {
     const pubkey = new PublicKey(account);
