@@ -4,7 +4,7 @@ import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { useAccountInfo } from "@/services/account/queries"
 import { useTransactions } from "@/services/transactions/queries"
-import { Wallet, Copy, Coins, ExternalLink, Code, CheckCircle2, AlertCircle, Badge } from "lucide-react"
+import { Wallet, Copy, Coins, ExternalLink, Code, CheckCircle2, AlertCircle } from "lucide-react"
 import { useEffect, useState } from "react"
 import { CustomAccordion, CustomAccordionContent, CustomAccordionItem, CustomAccordionTrigger } from "@/components/ui/accordion"
 import { CustomBadge } from "@/components/ui/badge"
@@ -32,19 +32,19 @@ export default function AddressPage() {
     return `${address.slice(0, 6)}...${address.slice(-4)}`
   }
 
-  const fetchIdlData = async () => {
-    if(data?.data.accountInfo.executable) {
-      try {
-        const idl = await fetchIdl(data?.data.accountInfo.owner)
-        setIdl(idl)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   useEffect(() => {
+    const fetchIdlData = async () => {
+      if(data?.data?.accountInfo?.executable) {
+        try {
+          const idl = await fetchIdl(data.data.accountInfo.owner)
+          setIdl(idl)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    }
     fetchIdlData()
-  }, [data?.data.accountInfo.executable])}
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col items-center p-4 sm:p-6 md:p-8 relative overflow-hidden">

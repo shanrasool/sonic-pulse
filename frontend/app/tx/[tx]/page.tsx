@@ -1,13 +1,13 @@
 "use client"
 
-import React, { JSX } from "react"
+import type { JSX } from "react"
+import React from "react"
 import { useParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { useTransactionByHash } from "@/services/transaction/queries"
 import { useState, useEffect } from "react"
 import { format } from "date-fns"
-import Link from "next/link"
-import { Hash, Clock, CheckCircle2, XCircle, Copy, ExternalLink, CreditCard, Cpu, FileText, ArrowDownUp, Layers, Code, ChevronDown, ChevronRight, Wallet, Coins, ArrowLeft, Eye, Shield, ArrowRight, RefreshCw, Download, Send, ReceiptText, Zap } from 'lucide-react'
+import { Hash, Clock, CheckCircle2, XCircle, Copy, ExternalLink, CreditCard, Cpu, ArrowDownUp, Layers, Code, ChevronDown, ChevronRight, Wallet, Coins, Shield, ArrowRight, RefreshCw, Send, ReceiptText } from 'lucide-react'
 import {
   CustomAccordion as Accordion,
   CustomAccordionContent as AccordionContent,
