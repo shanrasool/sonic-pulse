@@ -23,16 +23,17 @@ export function formatNumber(num: number): string {
     }).format(date)
   }
   
-export function determineInputType(input: string): 'address' | 'transaction' | 'invalid' {
-  const cleanInput = input.trim();
-  if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(cleanInput)) {
-    return 'address';
+  export function determineInputType(input: string): 'address' | 'transaction' | 'invalid' {
+    const cleanInput = input.trim();
+    if (/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(cleanInput)) {
+      return 'address';
+    }
+    if (/^[1-9A-HJ-NP-Za-km-z]{87,88}$/.test(cleanInput)) {
+      return 'transaction';
+    }
+    return 'invalid';
   }
-  if (/^[1-9A-HJ-NP-Za-km-z]{88}$/.test(cleanInput)) {
-    return 'transaction';
-  }
-  return 'invalid';
-}
+  
   
 
 const rpc = new Connection("https://sonic.helius-rpc.com/");
