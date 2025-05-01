@@ -10,6 +10,63 @@
 It combines direct RPC access from the client with enriched backend APIs to give you a complete view of the blockchain — from low-level metrics to decoded transaction and account data.
 
 ---
+## Local Development Setup Guide
+
+This project consists of:
+
+- **Frontend**: Built with [Next.js](https://nextjs.org/) and uses [Bun](https://bun.sh/) as the package manager.
+- **Backend**: Built with [Encore](https://encore.dev/) and also uses Bun.
+
+---
+
+### 📦 Prerequisites
+
+Ensure the following are installed on your machine:
+
+- [Bun](https://bun.sh/docs/installation)
+- [Encore CLI](https://encore.dev/docs/get-started/installation)
+
+---
+
+### 🛠 Backend Setup
+
+1. Install dependencies:
+   ```bash
+   bun install
+   ```
+   > You may use another package manager, but **Bun is preferred**.
+
+2. Start the backend server:
+   ```bash
+   encore run
+   ```
+
+---
+
+### 🌐 Frontend Setup
+
+1. Navigate to the frontend directory and install dependencies:
+   ```bash
+   bun install
+   ```
+
+2. Create a `.env` file in the root of the frontend directory and add the following:
+   ```env
+   NEXT_PUBLIC_BACKEND_URL=http://localhost:PORT
+   ```
+   > Replace `PORT` with the actual port where the backend is running.
+
+3. Start the development server:
+   ```bash
+   bun run dev
+   ```
+
+---
+
+### ✅ You’re all set!
+
+Your frontend should now be accessible at `http://localhost:3000` (or another port if configured), and it should be communicating with your Encore backend.
+___
 
 ## ⚙️ Client-Side RPC Integration
 
